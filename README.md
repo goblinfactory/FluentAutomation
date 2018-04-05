@@ -12,3 +12,30 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 1. build the solution
 1. right click on the test project `FluentAutomation.TestApplication` and select `View -> in browser`. This will start iisexpress.
 1. Run or debug any unit test you want to.
+
+### current status of this (Alan's) fork (not yet ready for pull request)
+
+- 72 passing tests, and 12 failing. I have not yet started digging in to why they're failing, whether it's timing with new chrome updates, or the new chrome javascript debugging. For now I wanted to get this up as soon as possible since I have a significant project that relies heavily on FA.
+- I'll be looking in the failing tests tomorrow, below is the results so far, all the really critical items appear to be working;
+
+**what appears to still be broken with my (this) latest update to support Chrome 65**
+
+```csharp
+
+- dragAndDropByPosition()
+- DragAndDropBySelector()
+- DragAndDropBySelectorOffset()
+- HoverXY()
+- HoverTests.Scroll()
+- SelectIndexFailed()
+- SelectTextFailed()
+- SelectValueFailed()
+- FrameSwitchTest()
+- ScreenshotOnFailedAction()
+- ScreenshotOnFailedAssert()
+
+```
+
+#### Current test results with chrome 65
+
+![alt text](failing-tests.png "current test results with chrome 65")
