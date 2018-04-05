@@ -12,6 +12,5 @@ $ver = $url.Split($seperator, [System.StringSplitOptions]::RemoveEmptyEntries)[1
 $file = "https://chromedriver.storage.googleapis.com/" + $ver + "chromedriver_win32.zip"
 write-host "downloading $file"
 Invoke-WebRequest $file -OutFile "FluentAutomation.SeleniumWebDriver\3rdPartyLib\chromedriver.exe"
-
-
-                  
+write-host "Remember to update your path to include the chromedriver location."
+write-host "see https://sites.google.com/a/chromium.org/chromedriver/getting-started"                  
