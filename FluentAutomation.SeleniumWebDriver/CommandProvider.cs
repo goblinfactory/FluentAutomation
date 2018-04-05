@@ -40,8 +40,8 @@ namespace FluentAutomation
                     FluentTest.ProviderInstance = webDriver;
 
                 webDriver.Manage().Cookies.DeleteAllCookies();
-                webDriver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
-                
+                webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
                 // If an alert is open, the world ends if we touch the size property. Ignore this and let it get set by the next command chain
                 try
                 {
@@ -512,7 +512,7 @@ namespace FluentAutomation
                 // get raw screenshot
                 var screenshotDriver = (ITakesScreenshot)this.webDriver;
                 var tmpImagePath = Path.Combine(this.Settings.UserTempDirectory, screenshotName);
-                screenshotDriver.GetScreenshot().SaveAsFile(tmpImagePath, ImageFormat.Png);
+                screenshotDriver.GetScreenshot().SaveAsFile(tmpImagePath, ScreenshotImageFormat.Png);
 
                 // save to file store
                 this.fileStoreProvider.SaveScreenshot(this.Settings, File.ReadAllBytes(tmpImagePath), screenshotName);
