@@ -98,4 +98,7 @@ Actions.WaitTests
   * `Timeouts().ImplicitlyWait` -> `Timeouts().ImplicitWait`
   * update `Webdriver` from ver `2.41` to `3.11`
   * `browserCapabilities.IsJavaScriptEnabled` no longer supported, changed to `browserCapabilities.SetCapability("javascriptEnabled", true);`
-  
+ 
+#### test notes - first observations
+
+- `ScreenshotOnFailedAction()` looks like a false negative, the test needs to inject a dateTime provider, or test a file matching a regex is created, instead of looking for an exact dateTime filename in temp.
