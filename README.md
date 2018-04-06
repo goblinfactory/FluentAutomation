@@ -42,6 +42,7 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 
 #### Alan's TODO list : what to do before creating new package
 
+- setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
 - test running the solution not as admininistrator
 - run tests a few times and see if the tests are consistent
 - run invididual tests and see if they're stable
