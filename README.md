@@ -45,7 +45,6 @@ Actions.SwitchTests
 .FrameSwitchTest() <-- FLAKEY
 
 Actions.TakeScreenshotTests
-.ScreenshotOnFailedAction()
 .ScreenshotOnFailedAssert()
 
 Actions.WaitTests
@@ -66,6 +65,7 @@ Actions.WaitTests
 
 #### rough release notes : this fix
 
+- fix false negative test, `ScreenShotOnFailedAction()`
 - I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
 - i've added the readme and powershell script the solution items, that's the only reason the sln file has been modified.
 - webdriver changes to the API 

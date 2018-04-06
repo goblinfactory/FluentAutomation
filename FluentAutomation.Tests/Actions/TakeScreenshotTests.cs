@@ -51,20 +51,29 @@ namespace FluentAutomation.Tests.Actions
             {
                 Config.ScreenshotOnFailedAction(true);
 
+                var lastFile = MostRecentTempFile()?.Name ?? "xx.xx";
+
                 Assert.Throws<FluentException>(() => I.Click("#nope"));
+                
+                var newFile = MostRecentTempFile();
 
-                var screenshotName = string.Format(CultureInfo.CurrentCulture, "ActionFailed_{0}", DateTimeOffset.Now.Date.ToFileTime());
-                var filepath = this.tempPath + screenshotName + ".png";
                 I.Assert
-                    .True(() => File.Exists(filepath))
-                    .True(() => new FileInfo(filepath).Length > 0);
+                    .True(() => newFile != null)
+                    .True(() => newFile.Name != lastFile)
+                    .True(() => newFile.Exists)
+                    .True(() => newFile.Length > 0);
 
-                File.Delete(filepath);
+                newFile.Delete();
             }
             finally
             {
                 Config.ScreenshotOnFailedAction(c);
             }
+        }
+
+        private FileInfo MostRecentTempFile()
+        {
+            return (new DirectoryInfo(tempPath).GetFiles("*.png").OrderByDescending(f => f.CreationTime)).FirstOrDefault();
         }
 
         [Fact]
