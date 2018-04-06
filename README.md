@@ -16,29 +16,52 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 ### current status of this (Alan's) fork (not yet ready for pull request)
 
 - 72 passing tests, and 12 failing. I have not yet started digging in to why they're failing, whether it's timing with new chrome updates, or the new chrome javascript debugging. For now I wanted to get this up as soon as possible since I have a significant project that relies heavily on FA.
+
+  - update, 3:43pm 6 April : seems the tests are mostly repeatable.
+
 - I'll be looking in the failing tests tomorrow, below is the results so far, all the really critical items appear to be working;
 
 **what appears to still be broken with my (this) latest update to support Chrome 65**
 
+With two test runs I got the same results exception for the two tests `PressType()` and `WaitUntil()` which passed once, then failed the second time.
+I've not tested a third time yet. All tests in red below are failed tests. I have not listed the passing tests. 72 test passed.
+
+For a full list of the test results see here : <a href="failing-tests.png">full test results (resharper test run with chrome65)</a>
+
 ```csharp
 
-- dragAndDropByPosition()
-- DragAndDropBySelector()
-- DragAndDropBySelectorOffset()
-- HoverXY()
-- HoverTests.Scroll()
-- SelectIndexFailed()
-- SelectTextFailed()
-- SelectValueFailed()
-- FrameSwitchTest()
-- ScreenshotOnFailedAction()
-- ScreenshotOnFailedAssert()
+- Actions.ClickTests
+.XYClicks()
+
+- Actions.DragTests
+.DragAndDropByPosition()
+.DragAndDropBySelector()
+.DragAndDropBySelectorOffset()
+
+- Actions.HoverTests
+.HoverXY()
+.Scroll()
+
+- Actions.PressTypeTests
+.PressType() <-- FLAKEY
+
+Actions.SelectTests
+.SelectIndexFailed()
+.SelectTextFailed()
+.SelectValueFailed()
+
+Actions.SwitchTests
+.FrameSwitchTest()
+
+Actions.TakeScreenshotTests
+.ScreenshotOnFailedAction()
+.ScreenshotOnFailedAssert()
+
+Actions.WaitTests
+.WaitUntil() <-- FLAKEY
 
 ```
 
-#### Current test results with chrome 65
-
-![alt text](failing-tests.png "current test results with chrome 65")
 
 #### Alan's TODO list : what to do before creating new package
 
