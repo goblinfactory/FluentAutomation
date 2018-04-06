@@ -29,32 +29,42 @@ namespace FluentAutomation.Tests.Actions
             var filepath = this.tempPath + screenshotName + ".png";
 
             I.Assert.False(() => File.Exists(filepath));
-
-            I.TakeScreenshot(screenshotName)
-             .Assert
-                .True(() => File.Exists(filepath))
-                .True(() => new FileInfo(filepath).Length > 0);
-
-            File.Delete(filepath);
+            try
+            {
+                I.TakeScreenshot(screenshotName)
+                    .Assert
+                    .True(() => File.Exists(filepath))
+                    .True(() => new FileInfo(filepath).Length > 0);
+            }
+            finally
+            {
+                File.Delete(filepath);
+            }
         }
         
         [Fact]
         public void ScreenshotOnFailedAction()
         {
+            //#ADH Do we need a lock here for situations where tests are running in parallel?
             var c = Config.Settings.ScreenshotOnFailedAction;
-            Config.ScreenshotOnFailedAction(true);
+            try
+            {
+                Config.ScreenshotOnFailedAction(true);
 
-            Assert.Throws<FluentException>(() => I.Click("#nope"));
+                Assert.Throws<FluentException>(() => I.Click("#nope"));
 
-            var screenshotName = string.Format(CultureInfo.CurrentCulture, "ActionFailed_{0}", DateTimeOffset.Now.Date.ToFileTime());
-            var filepath = this.tempPath + screenshotName + ".png";
-            I.Assert
-             .True(() => File.Exists(filepath))
-             .True(() => new FileInfo(filepath).Length > 0);
+                var screenshotName = string.Format(CultureInfo.CurrentCulture, "ActionFailed_{0}", DateTimeOffset.Now.Date.ToFileTime());
+                var filepath = this.tempPath + screenshotName + ".png";
+                I.Assert
+                    .True(() => File.Exists(filepath))
+                    .True(() => new FileInfo(filepath).Length > 0);
 
-            File.Delete(filepath);
-
-            Config.ScreenshotOnFailedAction(c);            
+                File.Delete(filepath);
+            }
+            finally
+            {
+                Config.ScreenshotOnFailedAction(c);
+            }
         }
 
         [Fact]
