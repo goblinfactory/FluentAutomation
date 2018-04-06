@@ -6,8 +6,8 @@ Browse the docs and follow [@stirno](http://twitter.com/intent/user?screen_name=
 
 full links to docs coming shortly. 
 
-* [v3 getting started docs](/docs/v3/getting-started.md) 
-* [V2 getting started docs](/docs/v2/getting-started.md) 
+* [v3 getting started docs](/Docs/v3/getting-started.md) 
+* [V2 getting started docs](/Docs/v2/getting-started.md) 
 
 ### Building the solution and running the unit tests
 
