@@ -2,7 +2,12 @@
 
 Please post ideas and new functionality that you'd like to see on our new UserVoice site: [http://fluentapi.uservoice.com](http://fluentapi.uservoice.com)
 
-Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) orfollow [@stirno](http://twitter.com/intent/user?screen_name=stirno) on Twitter.
+Browse the docs and follow [@stirno](http://twitter.com/intent/user?screen_name=stirno) on Twitter.
+
+full links to docs coming shortly. 
+
+* [v3 getting started docs](/docs/v3/getting-started.md) 
+* [V2 getting started docs](/docs/v2/getting-started.md) 
 
 ### Building the solution and running the unit tests
 
@@ -13,8 +18,7 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 1. right click on the test project `FluentAutomation.TestApplication` and select `View -> in browser`. This will start iisexpress.
 1. Run or debug any unit test you want to.
 
-
-#### rough release notes : this fix
+### rough release notes : this fix
 
 - fix false negative test, `ScreenShotOnFailedAction()`
 - I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
@@ -61,7 +65,8 @@ Actions.WaitTests
 
 ```
 
-#### random ideas and notes
+### random ideas and notes
 
 - setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
 - add cake build script to do build, run tests and create package.
+- add in some readme links to docs, easy peezy.
