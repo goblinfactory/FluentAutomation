@@ -28,6 +28,10 @@ I've not tested a third time yet. All tests in red below are failed tests. I hav
 
 For a full list of the test results see here : <a href="failing-tests.png">full test results (resharper test run with chrome65)</a>
 
+### failing tests
+
+Tests marked with "Flakey" pass if you run them on their own immediately after doing a full test run (run all) from resharper.
+
 ```csharp
 
 - Actions.ClickTests
@@ -51,7 +55,7 @@ Actions.SelectTests
 .SelectValueFailed()
 
 Actions.SwitchTests
-.FrameSwitchTest()
+.FrameSwitchTest() <-- FLAKEY
 
 Actions.TakeScreenshotTests
 .ScreenshotOnFailedAction()
@@ -61,6 +65,8 @@ Actions.WaitTests
 .WaitUntil() <-- FLAKEY
 
 ```
+
+
 
 
 #### Alan's TODO list : what to do before creating new package
