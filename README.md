@@ -42,6 +42,7 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 
 #### Alan's TODO list : what to do before creating new package
 
+- I have not reviwed release notes, if I can't actually fix this, then ...no point!
 - setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
 - test running the solution not as admininistrator
 - run tests a few times and see if the tests are consistent
@@ -59,3 +60,13 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
    - Keep the API as simple as possible so that it can have any driver hooked up, and will weather future browser changes.
 - Consider accessibility testing, and if there a legal reason for actually using the full accesibility set of features.
 - add cake build script to do build, run tests and create package.
+
+#### draft release notes (super rough)
+
+- I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
+- i've added the readme and powershell script the solution items, that's the only reason the sln file has been modified.
+- webdriver changes to the API 
+  * `Timeouts().ImplicitlyWait` -> `Timeouts().ImplicitWait`
+  * update `Webdriver` from ver `2.41` to `3.11`
+  * `browserCapabilities.IsJavaScriptEnabled` no longer supported, changed to `browserCapabilities.SetCapability("javascriptEnabled", true);`
+  
