@@ -39,3 +39,22 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 #### Current test results with chrome 65
 
 ![alt text](failing-tests.png "current test results with chrome 65")
+
+#### Alan's TODO list : what to do before creating new package
+
+- test running the solution not as admininistrator
+- run tests a few times and see if the tests are consistent
+- run invididual tests and see if they're stable
+- run tests with and without stickysessions
+- investigate individual causes of test failures, see very briefly if I can debug each easily?
+- see if these are timing issues?
+- If certain features are consistently **not** working then consider (if necessary) creating a new release that supports chrome65 but has fewer features, but which features are reliably available.  Impact is that folk would be concerned that this could be a pattern going forward and stop using FluentAutomation for their projects.
+- approach some of the other contributors and ask for volunteers to help fix the new bugs 
+- find out from @stirno if he thinks there are other better projects taking over this space?
+- if the project is or has reached end of life, then consider if there is a simpler subset that I could release for my own testing based on the following philosophy
+   - don't try to be able to reproduce a human user
+   - force a subset the designer of a SPA or web app can design against, to keep his app testable.
+   - don't bring out an API to be able to test anything
+   - Keep the API as simple as possible so that it can have any driver hooked up, and will weather future browser changes.
+- Consider accessibility testing, and if there a legal reason for actually using the full accesibility set of features.
+- add cake build script to do build, run tests and create package.
