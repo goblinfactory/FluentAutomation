@@ -13,7 +13,16 @@ Visit our public site at [http://fluent.stirno.com](http://fluent.stirno.com) or
 1. right click on the test project `FluentAutomation.TestApplication` and select `View -> in browser`. This will start iisexpress.
 1. Run or debug any unit test you want to.
 
-### current status of this (Alan's) fork (not yet ready for pull request)
+
+#### rough release notes : this fix
+
+- fix false negative test, `ScreenShotOnFailedAction()`
+- I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
+- i've added the readme and powershell script the solution items, that's the only reason the sln file has been modified.
+- webdriver changes to the API 
+  * `Timeouts().ImplicitlyWait` -> `Timeouts().ImplicitWait`
+  * update `Webdriver` from ver `2.41` to `3.11`
+  * `browserCapabilities.IsJavaScriptEnabled` no longer supported, changed to `browserCapabilities.SetCapability("javascriptEnabled", true);`
 
 ### failing tests
 
@@ -55,24 +64,4 @@ Actions.WaitTests
 #### random ideas and notes
 
 - setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
-- test running the solution not as admininistrator
-- run tests a few times and see if the tests are consistent
-- run invididual tests and see if they're stable
-- run tests with and without stickysessions
-- investigate individual causes of test failures, see very briefly if I can debug each easily?
-- see if these are timing issues?
 - add cake build script to do build, run tests and create package.
-
-#### rough release notes : this fix
-
-- fix false negative test, `ScreenShotOnFailedAction()`
-- I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
-- i've added the readme and powershell script the solution items, that's the only reason the sln file has been modified.
-- webdriver changes to the API 
-  * `Timeouts().ImplicitlyWait` -> `Timeouts().ImplicitWait`
-  * update `Webdriver` from ver `2.41` to `3.11`
-  * `browserCapabilities.IsJavaScriptEnabled` no longer supported, changed to `browserCapabilities.SetCapability("javascriptEnabled", true);`
- 
-#### test notes - first observations
-
-- `ScreenshotOnFailedAction()` looks like a false negative, the test needs to inject a dateTime provider, or test a file matching a regex is created, instead of looking for an exact dateTime filename in temp.
