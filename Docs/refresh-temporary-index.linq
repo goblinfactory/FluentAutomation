@@ -8,9 +8,8 @@ void Main()
 
 void CreateDocs()
 {
-	var root = new FileInfo(Util.CurrentQuery.FilePath).Directory.FullName;
-	var docs = Path.Combine(root, "v3");
-	var dir = new DirectoryInfo(docs);
+	var root = Path.Combine(new FileInfo(Util.CurrentQuery.FilePath).Directory.FullName, "v3");
+	var dir = new DirectoryInfo(root);
 	var sb = WriteHeading();
 	
 	foreach(var md in dir.GetFiles("*.md"))

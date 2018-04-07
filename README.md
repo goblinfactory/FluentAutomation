@@ -6,7 +6,7 @@ Browse the docs and follow [@stirno](http://twitter.com/intent/user?screen_name=
 
 full links to docs coming shortly. 
 
-* [temporary getting started docs](/Docs/temporary-doc-index.md) 
+* [temporary getting started docs](/Docs/v3/temporary-doc-index.md) 
 
 ### Building the solution and running the unit tests
 
