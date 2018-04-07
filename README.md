@@ -27,6 +27,11 @@ full links to docs coming shortly.
   * `Timeouts().ImplicitlyWait` -> `Timeouts().ImplicitWait`
   * update `Webdriver` from ver `2.41` to `3.11`
   * `browserCapabilities.IsJavaScriptEnabled` no longer supported, changed to `browserCapabilities.SetCapability("javascriptEnabled", true);`
+- Remove `Click(x,y)` and replace with message not supported use Click(element, x, y)` 
+- Add new test FindSpecificElementTest()`
+- Fix false negative `SelectedIndexFailed()`
+- Fix false negative `SelectValueFailed()`
+- Fix false negative `ScreenshotOnFailedAction()`
 
 ### failing tests
 
