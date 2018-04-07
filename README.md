@@ -6,8 +6,7 @@ Browse the docs and follow [@stirno](http://twitter.com/intent/user?screen_name=
 
 full links to docs coming shortly. 
 
-* [v3 getting started docs](/Docs/v3/getting-started.md) 
-* [V2 getting started docs](/Docs/v2/getting-started.md) 
+* [temporary getting started docs](/Docs/temporary-doc-index.md) 
 
 ### Building the solution and running the unit tests
 
@@ -20,6 +19,7 @@ full links to docs coming shortly.
 
 ### rough release notes : this fix
 
+- add linqpad script `Docs\refresh-temporary-index.linq` to generate temporary documentation index `Docs\temporary-doc-index.md`
 - fix false negative test, `ScreenShotOnFailedAction()`
 - I've removed chromedriver.exe from the project and have written a powershell script `update-chrome-driver.ps1`
 - i've added the readme and powershell script the solution items, that's the only reason the sln file has been modified.
@@ -70,3 +70,4 @@ Actions.WaitTests
 - setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
 - add cake build script to do build, run tests and create package.
 - add in some readme links to docs, easy peezy.
+- add in the sales pitch sample code (valid useful end to end sample) to the home page so that folk can see the difference between raw Selenium vs FluentAutomation.
