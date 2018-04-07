@@ -12,7 +12,7 @@ void CreateDocs()
 	var dir = new DirectoryInfo(root);
 	var sb = WriteHeading();
 	
-	foreach(var md in dir.GetFiles("*.md"))
+	foreach(var md in dir.GetFiles("*.md").Where(f => !f.Name.StartsWith("temporary")))
 	{
 		var description = GetTitle(md);
 		var name = md.Name.Substring(0,md.Name.Length-3);

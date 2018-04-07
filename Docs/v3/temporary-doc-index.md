@@ -39,6 +39,5 @@ method | summary
 [scriptcs](scriptcs.md)|Access to FluentAutomation inside of <a href="http://scriptcs.net/" target="_blank">scriptcs</a> is trivially easy and very powerful. We have a custom Script Pack that provides access to the functionality you expect.
 [settings](settings.md)|Most of the configurable settings are located on the static object FluentAutomation.Settings and can be set anywhere within your project.
 [sticky-sessions](sticky-sessions.md)|**_Feature Status: Beta_**
-[temporary-doc-index](temporary-doc-index.md)|[actions.append](actions.append.md)|Append text to the current values of inputs and textareas. Automatically calls <code>ToString()</code> on non-string values to simplify tests.
 
 Created : 07/04/2018
