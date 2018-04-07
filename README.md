@@ -31,6 +31,7 @@ full links to docs coming shortly.
 - Add new test FindSpecificElementTest()`
 - Fix false negative `SelectedIndexFailed()`
 - Fix false negative `SelectValueFailed()`
+- Fix false negative `SelectTextFailed()`
 - Fix false negative `ScreenshotOnFailedAction()`
 
 ### failing tests
@@ -38,36 +39,27 @@ full links to docs coming shortly.
 Tests marked with "Flakey" pass if you run them on their own immediately after doing a full test run (run all) from resharper.
 
 ```csharp
-
-- Actions.ClickTests
-.XYClicks()
-
-- Actions.DragTests
-.DragAndDropByPosition()
-.DragAndDropBySelector()
-.DragAndDropBySelectorOffset()
-
-- Actions.HoverTests
-.HoverXY()
-.Scroll()
-
-- Actions.PressTypeTests
-.PressType() <-- FLAKEY
-
-Actions.SelectTests
-~~.SelectIndexFailed()~~
-.SelectTextFailed()
-~~.SelectValueFailed()~~
-
-Actions.SwitchTests
-.FrameSwitchTest() <-- FLAKEY
-
-Actions.TakeScreenshotTests
-~~.ScreenshotOnFailedAssert()~~
-
-Actions.WaitTests
-.WaitUntil() <-- FLAKEY
-
+1. Actions.ClickTests
+   * .XYClicks()
+1. Actions.DragTests
+   * .DragAndDropByPosition()
+   * .DragAndDropBySelector()
+   * .DragAndDropBySelectorOffset()
+1. Actions.HoverTests
+   * .HoverXY()
+   * .Scroll()
+1. Actions.PressTypeTests
+   * .PressType() <-- FLAKEY
+1. Actions.SelectTests
+   * .SelectIndexFailed() fixed
+   * .SelectTextFailed() fixed
+   * .SelectValueFailed() fixed
+   * Actions.SwitchTests
+   * .FrameSwitchTest() <-- FLAKEY
+1. Actions.TakeScreenshotTests
+   * .ScreenshotOnFailedAssert() fixed
+   * . Actions.WaitTests
+   * .WaitUntil() <-- FLAKEY
 ```
 
 ### random ideas and notes

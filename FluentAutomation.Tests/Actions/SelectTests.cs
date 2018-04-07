@@ -54,7 +54,8 @@ namespace FluentAutomation.Tests.Actions
         [Fact]
         public void SelectTextFailed()
         {
-            var exception = Assert.Throws<FluentException>(() => I.Select("NonExistentText").From(InputsPage.SelectControlSelector));
+            var exception = Record.Exception(() => I.Select("NonExistentText").From(InputsPage.SelectControlSelector));
+            Assert.IsType<FluentException>(exception);
             Assert.True(exception.InnerException.Message.Contains("NonExistentText"));
         }
 
