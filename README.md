@@ -69,5 +69,4 @@ Actions.WaitTests
 
 - setup CICD on appVeyor so that I can have all code at very least build server tested with 100% passing tests before submitting pull requests.
 - add cake build script to do build, run tests and create package.
-- add in some readme links to docs, easy peezy.
 - add in the sales pitch sample code (valid useful end to end sample) to the home page so that folk can see the difference between raw Selenium vs FluentAutomation.

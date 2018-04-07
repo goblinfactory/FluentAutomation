@@ -1,4 +1,4 @@
-##Temporary FluentAutomation documentation
+## Temporary FluentAutomation documentation
 
 method | summary
 --- | ---

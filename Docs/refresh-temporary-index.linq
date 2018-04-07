@@ -34,7 +34,7 @@ string GetTitle(FileInfo file)
 StringBuilder WriteHeading()
 {
 	var sb = new StringBuilder();
-	sb.AppendLine($"##Temporary FluentAutomation documentation");
+	sb.AppendLine($"## Temporary FluentAutomation documentation");
 	sb.AppendLine();
 	sb.AppendLine("method | summary");
 	sb.AppendLine("--- | ---");
