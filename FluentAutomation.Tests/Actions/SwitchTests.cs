@@ -26,7 +26,8 @@ namespace FluentAutomation.Tests.Actions
             I.Switch.Frame(I.Find(SwitchPage.IFrameSelector))
              .Assert.Text("Alerts Testbed").In("h2");
 
-            Assert.Throws<FluentException>(() => I.Switch.Frame("non existent frame"));
+            var ex = Record.Exception(() => I.Switch.Frame("non existent frame"));
+            Assert.IsType<FluentException>(ex);
         }
 
         [Fact]
@@ -46,7 +47,9 @@ namespace FluentAutomation.Tests.Actions
             I.Switch.Window()
              .Assert.Text("Switch Testbed").In("h2");
 
-            Assert.Throws<FluentException>(() => I.Switch.Window("non existent window"));
+
+            var ex = Record.Exception(() => I.Switch.Window("non existent window"));
+            Assert.IsType<FluentException>(ex);
         }
     }
 }
