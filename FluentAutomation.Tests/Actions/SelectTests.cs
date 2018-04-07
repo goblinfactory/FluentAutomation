@@ -61,14 +61,25 @@ namespace FluentAutomation.Tests.Actions
         [Fact]
         public void SelectValueFailed()
         {
-            var exception = Assert.Throws<FluentException>(() => I.Select(Option.Value, "NonExistentValue").From(InputsPage.SelectControlSelector));
+            // this test hangs for 10 seconds, how can we speed up the timeout for this test? Should be able to override the global timeout with each select
+
+            // #ADH Code below fails, looks like a bug in Xunit fails with Exception is of type Selenium.something.elementNotFoundException ...
+            //var exception = Assert.Throws<FluentException>(() => I.Select(Option.Value, "NonExistentValue").From(InputsPage.SelectControlSelector));
+            //Assert.True(exception.InnerException.Message.Contains("NonExistentValue"));
+
+            // looks like the better approach is to use Record?
+            // https://www.richard-banks.org/2015/07/stop-using-assertthrows-in-your-bdd.html
+
+            var exception = Record.Exception(() => I.Select(Option.Value, "NonExistentValue").From(InputsPage.SelectControlSelector));
+            Assert.IsType<FluentException>(exception);
             Assert.True(exception.InnerException.Message.Contains("NonExistentValue"));
         }
 
         [Fact]
         public void SelectIndexFailed()
         {
-            var exception = Assert.Throws<FluentException>(() => I.Select(1000).From(InputsPage.SelectControlSelector));
+            var exception = Record.Exception(() => I.Select(1000).From(InputsPage.SelectControlSelector));
+            Assert.IsType<FluentException>(exception);
             Assert.True(exception.InnerException.Message.Contains("1000"));
         }
 

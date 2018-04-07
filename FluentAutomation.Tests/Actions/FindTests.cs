@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xunit;
+using Assert = Xunit.Assert;
 
 namespace FluentAutomation.Tests.Actions
 {
@@ -24,6 +26,13 @@ namespace FluentAutomation.Tests.Actions
             Assert.True(element.IsText);
             Assert.Throws<FluentElementNotFoundException>(() => I.Find("doesntexist").Element);
         }
+
+        [Fact]
+        public void FindSpecificElementTest()
+        {
+            Assert.True(I.Find(InputsPage.ButtonControlSelector).Element.Text == "Button");
+        }
+
 
         [Fact]
         public void FindMultipleElements()

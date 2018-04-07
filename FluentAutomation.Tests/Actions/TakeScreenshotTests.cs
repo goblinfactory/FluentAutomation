@@ -9,6 +9,9 @@ using FluentAutomation.Exceptions;
 
 namespace FluentAutomation.Tests.Actions
 {
+    // #ADH Do we need some type of test locking here for situations where tests are running in parallel or to prevent tests from running in parallel?
+    // something similar to this discussion https://github.com/xunit/xunit/issues/1179  How to disable parallelism for a test collection?
+    // Tests below are modifying global settings of saving screenshots to disk.
     public class TakeScreenshotTests : BaseTest
     {
         private string tempPath = null;
@@ -45,7 +48,7 @@ namespace FluentAutomation.Tests.Actions
         [Fact]
         public void ScreenshotOnFailedAction()
         {
-            //#ADH Do we need a lock here for situations where tests are running in parallel?
+
             var c = Config.Settings.ScreenshotOnFailedAction;
             try
             {
@@ -53,8 +56,10 @@ namespace FluentAutomation.Tests.Actions
 
                 var lastFile = MostRecentTempFile()?.Name ?? "xx.xx";
 
-                Assert.Throws<FluentException>(() => I.Click("#nope"));
+                var exception = Record.Exception(() => I.Click("#nope"));
                 
+                Assert.IsType<FluentException>(exception);
+
                 var newFile = MostRecentTempFile();
 
                 I.Assert
@@ -81,18 +86,29 @@ namespace FluentAutomation.Tests.Actions
         {
             var c = Config.Settings.ScreenshotOnFailedAssert;
             Config.ScreenshotOnFailedAssert(true);
+            try
+            {
+                var lastFile = MostRecentTempFile()?.Name ?? "xx.xx";
 
-            Assert.Throws<FluentException>(() => I.Assert.True(() => false));
+                var exception = Record.Exception(() => I.Assert.True(() => false));
 
-            var screenshotName = string.Format(CultureInfo.CurrentCulture, "AssertFailed_{0}", DateTimeOffset.Now.Date.ToFileTime());
-            var filepath = this.tempPath + screenshotName + ".png";
-            I.Assert
-             .True(() => File.Exists(filepath))
-             .True(() => new FileInfo(filepath).Length > 0);
+                Assert.IsType<FluentException>(exception);
 
-            File.Delete(filepath);
+                var newFile = MostRecentTempFile();
 
-            Config.ScreenshotOnFailedAssert(c);
+                I.Assert
+                    .True(() => newFile != null)
+                    .True(() => newFile.Name != lastFile)
+                    .True(() => newFile.Exists)
+                    .True(() => newFile.Length > 0);
+
+                newFile.Delete();
+            }
+            finally
+            {
+                Config.ScreenshotOnFailedAssert(c);
+            }
+
         }
 
         /*

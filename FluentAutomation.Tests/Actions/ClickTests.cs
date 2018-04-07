@@ -50,23 +50,21 @@ namespace FluentAutomation.Tests.Actions
         public void XYClicks()
         {
             var el = I.Find(InputsPage.ButtonControlSelector);
-            I.Click(el.Element.PosX + 10, el.Element.PosY + 10)
-             .Assert.Text("Button Clicked").In(InputsPage.ButtonClickedTextSelector);
 
-            I.DoubleClick(el.Element.PosX + 10, el.Element.PosY + 10)
-             .Assert.Text("Button Double Clicked").In(InputsPage.ButtonClickedTextSelector);
-
-            I.RightClick(el.Element.PosX + 10, el.Element.PosY + 10)
-             .Assert.Text("Button Right Clicked").In(InputsPage.ButtonClickedTextSelector);
+            I.Click(el, 10, 10)
+                .Assert.Text("Button Clicked").In(InputsPage.ButtonClickedTextSelector);
 
             I.Click(InputsPage.ButtonControlSelector, 10, 10)
-             .Assert.Text("Button Clicked").In(InputsPage.ButtonClickedTextSelector);
+                .Assert.Text("Button Clicked").In(InputsPage.ButtonClickedTextSelector);
+
+            I.DoubleClick(el,10, 10)
+                .Assert.Text("Button Double Clicked").In(InputsPage.ButtonClickedTextSelector);
 
             I.DoubleClick(InputsPage.ButtonControlSelector, 10, 10)
-             .Assert.Text("Button Double Clicked").In(InputsPage.ButtonClickedTextSelector);
+                .Assert.Text("Button Double Clicked").In(InputsPage.ButtonClickedTextSelector);
 
             I.RightClick(InputsPage.ButtonControlSelector, 10, 10)
-             .Assert.Text("Button Right Clicked").In(InputsPage.ButtonClickedTextSelector);
+                .Assert.Text("Button Right Clicked").In(InputsPage.ButtonClickedTextSelector);
         }
 
         [Fact]

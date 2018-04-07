@@ -56,6 +56,7 @@ namespace FluentAutomation
 
         public IActionSyntaxProvider Click(int x, int y)
         {
+            throw new NotImplementedException("Please use Click(element, x,y) this is currently not working.");
             this.commandProvider.Click(x, y);
             return this;
         }
@@ -111,8 +112,10 @@ namespace FluentAutomation
             return this;
         }
 
+        [Obsolete("Not currently supported with latest version of Chrome, please use DoubleClick(elementProxy,x,y)")]
         public IActionSyntaxProvider DoubleClick(int x, int y)
         {
+            throw new NotImplementedException("Not currently supported with latest version of Chrome, please use DoubleClick(elementProxy,x,y)");
             this.commandProvider.DoubleClick(x, y);
             return this;
         }
@@ -689,6 +692,11 @@ namespace FluentAutomation
         }
 
         public SelectSyntaxProvider Select(Option mode, string value)
+        {
+            return new SelectSyntaxProvider(this, value, mode == Option.Text ? SelectionOption.Text : SelectionOption.Value);
+        }
+
+        public SelectSyntaxProvider Select(Option mode, string value, TimeSpan timeout)
         {
             return new SelectSyntaxProvider(this, value, mode == Option.Text ? SelectionOption.Text : SelectionOption.Value);
         }

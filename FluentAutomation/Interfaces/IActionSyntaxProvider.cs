@@ -185,13 +185,14 @@ namespace FluentAutomation.Interfaces
         /// <param name="timeout">Timeout for this specific action.</param>
         IActionSyntaxProvider WaitUntil(Expression<Func<bool>> conditionFunc, TimeSpan timeout);
 
-        // remote commands
-        /// <summary>
-        /// Click at the specified coordinates.
-        /// </summary>
-        /// <param name="x">X-coordinate.</param>
-        /// <param name="y">Y-coordinate</param>
-        IActionSyntaxProvider Click(int x, int y);
+        //// remote commands
+        ///// <summary>
+        ///// Click at the specified coordinates.
+        ///// </summary>
+        ///// <param name="x">X-coordinate.</param>
+        ///// <param name="y">Y-coordinate</param>
+        //IActionSyntaxProvider Click(int x, int y);
+        // #ADH Not currently working with the latest Chrome65, please use Click(element, x,y) instead.
 
         /// <summary>
         /// Click the element matching <paramref name="selector"/>.
@@ -207,12 +208,13 @@ namespace FluentAutomation.Interfaces
         /// <param name="y">Y-coordinate offset.</param>
         IActionSyntaxProvider Click(string selector, int x, int y);
 
-        /// <summary>
-        /// DoubleClick at the specified coordinates.
-        /// </summary>
-        /// <param name="x">X-coordinate specified.</param>
-        /// <param name="y">Y-coordinate specified.</param>
-        IActionSyntaxProvider DoubleClick(int x, int y);
+        ///// <summary>
+        ///// DoubleClick at the specified coordinates.
+        ///// </summary>
+        ///// <param name="x">X-coordinate specified.</param>
+        ///// <param name="y">Y-coordinate specified.</param>
+        //IActionSyntaxProvider DoubleClick(int x, int y);
+        //#ADH Not currently supported with latest Chrome65, please use DoubleClick(element,x,y) instead.
 
         /// <summary>
         /// DoubleClick the element matching <paramref name="selector"/>.
@@ -228,12 +230,13 @@ namespace FluentAutomation.Interfaces
         /// <param name="y">Y-coordinate offset.</param>
         IActionSyntaxProvider DoubleClick(string selector, int x, int y);
 
-        /// <summary>
-        /// RightClick at the specified coordinates.
-        /// </summary>
-        /// <param name="x">X-coordinate specified.</param>
-        /// <param name="y">Y-coordinate specified.</param>
-        IActionSyntaxProvider RightClick(int x, int y);
+        ///// <summary>
+        ///// RightClick at the specified coordinates.
+        ///// </summary>
+        ///// <param name="x">X-coordinate specified.</param>
+        ///// <param name="y">Y-coordinate specified.</param>
+        //IActionSyntaxProvider RightClick(int x, int y);
+        //Not currently supported in latest version of Chrome65 please use RightClick(element,x,y) instead.
 
         /// <summary>
         /// RightClick the element matching <paramref name="selector"/>.
