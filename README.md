@@ -55,15 +55,15 @@ Tests marked with "Flakey" pass if you run them on their own immediately after d
 .PressType() <-- FLAKEY
 
 Actions.SelectTests
-.SelectIndexFailed()
+~~.SelectIndexFailed()~~
 .SelectTextFailed()
-.SelectValueFailed()
+~~.SelectValueFailed()~~
 
 Actions.SwitchTests
 .FrameSwitchTest() <-- FLAKEY
 
 Actions.TakeScreenshotTests
-.ScreenshotOnFailedAssert()
+~~.ScreenshotOnFailedAssert()~~
 
 Actions.WaitTests
 .WaitUntil() <-- FLAKEY
